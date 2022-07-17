@@ -2,7 +2,9 @@
   "name": "fitness-app",
   "version": "0.1.0",
   "private": true,
+  "Access-Control-Allow-Origin": "*",
   "dependencies": {
+    "@auth0/auth0-react": "^1.10.2",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.6.1",
