@@ -29,14 +29,17 @@ function App() {
 
       <Navbar />
       <Routes>
+        
           <Route exact path ='/' element={<LoginButton />} />
-          
+          {/* {isAuthenticated ? <Home /> : <LoginButton />} */}
+
           <Route path = '/home' element={<Home />} />
           <Route path = '/exercise/:id' element={<ExerciseDetail />} />
           <Route path = '/search' element={<SearchExercises />} />
-          <Route path = 'logout' element={<LogoutButton />} />
+          <Route path = '/' element={<LogoutButton />} />
       </Routes>
         {/* <Footer /> */}
+        
     </Box>
   );
     }
