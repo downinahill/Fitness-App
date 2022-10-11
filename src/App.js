@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import SearchExercises from './components/SearchExercises'
 import LoginButton from './components/LoginButton'
 import LogoutButton from './components/LogoutButton';
+import ExerciseVideos from './components/ExerciseVideos'
 import User from './components/User';
 
 
@@ -37,6 +38,8 @@ function App() {
           <Route path = '/exercise/:id' element={<ExerciseDetail />} />
           <Route path = '/search' element={<SearchExercises />} />
           <Route path = '/' element={<LogoutButton />} />
+          <Route path = '/exercisevideos' element={<ExerciseVideos />} />
+
       </Routes>
         {/* <Footer /> */}
         

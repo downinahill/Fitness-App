@@ -1,6 +1,6 @@
 body {
   font-family: 'Josefin Sans';
-  background-color: #FFFAFB;
+  background-color: #e7e6ec;
 }
 
 * {
@@ -23,7 +23,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #FF2625;
+  color: #1d91b1;
   font-size: 25px;
   border-radius: 4px;
   position: absolute;
@@ -93,8 +93,8 @@ body {
 }
 
 .search-btn:hover {
-  color: #FF2625 !important;
-  border: 1px solid #FF2625 !important;
+  color: #25ffaf !important;
+  border: 1px solid #25ff4d !important;
 }
 
 .exercise-video {
