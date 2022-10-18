@@ -34,10 +34,10 @@ function App() {
           {/* <Route to="/home" exact path ='/' element={<LoginButton />} />
           {isAuthenticated ? <Home /> : <LoginButton />} */}
 
-          <Route path = '/home' element={<Home />} />
+          <Route path = '/' element={<Home />} />
           <Route path = '/exercise/:id' element={<ExerciseDetail />} />
           <Route path = '/search' element={<SearchExercises />} />
-          <Route path = '/' element={<LogoutButton />} />
+          <Route path = '/logout' element={<LogoutButton />} />
           <Route path = '/exercisevideos' element={<ExerciseVideos />} />
 
       </Routes>
