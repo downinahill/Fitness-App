@@ -1,9 +1,48 @@
-import React from 'react';
-import { Typography, Box, Stack } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Typography, Box, Stack, Button, TextField } from '@mui/material';
 import Loader from './Loader';
+import { youtubeOptions, fetchData } from '../utils/fetchData';
+
 
 const ExerciseVideos = ({ exerciseVideos, name }) => {
-  if (!exerciseVideos.length) return <Loader />;
+  const [ search, setSearch ] = useState('')
+
+  const [video, setVideo] = useState([]);
+
+  useEffect(() => {
+    const fetchVideoData = async () => {
+      let videoData = [];
+
+      
+       videoData = await fetchData('https://youtube-search-and-download.p.rapidapi.com/channel/about?id=UCE_M8A5yxnLfW0KghEeajjw', youtubeOptions);
+
+        // videoData = await fetchData(`https://youtube-search-and-download.p.rapidapi.com/channel/about?id=UCE_M8A5yxnLfW0KghEeajjw`, youtubeOptions);
+      
+
+      setVideo(videoData);
+    };
+
+    fetchVideoData();
+  }, [video, setVideo]);
+
+  const handleSearch = async () => {
+    if(search) {
+      const videoData = await fetchData('https://youtube-search-and-download.p.rapidapi.com/channel/about?id=UCE_M8A5yxnLfW0KghEeajjw', youtubeOptions)
+    
+    console.log(videoData)
+  
+    const searchedVideos = videoData.filter(
+      (exercises) => exercises.name.toLowerCase().includes(search)
+      || exercises.target.toLowerCase().includes(search)
+      || exercises.equipment.toLowerCase().includes(search)
+      || exercises.bodyPart.toLowerCase().includes(search)
+      )
+    setSearch('')
+      setVideo(searchedVideos)
+  }
+    }
+
+  if (!exerciseVideos) return <Loader />;
 
   return (
     <Box sx={{ marginTop: { lg: '203px', xs: '20px' } }} p="20px">
@@ -15,7 +54,7 @@ const ExerciseVideos = ({ exerciseVideos, name }) => {
           <a
             key={index}
             className="exercise-video"
-            href={`https://www.youtube.com/watch?v=${item.video.videoId}`}
+            href={`https://youtube-search-and-download.p.rapidapi.com/watch?v=${item.video.videoId}`}
             target="_blank"
             rel="noreferrer"
           >
@@ -28,6 +67,40 @@ const ExerciseVideos = ({ exerciseVideos, name }) => {
                 {item.video.channelName}
               </Typography>
             </Box>
+            <Box position="relative" mb="72px">
+        <TextField 
+        sx={{ 
+          input: { 
+            fontWeight: '700', 
+          border: 'none', borderRadius: '4px'
+        },
+        width: { lg: '800px', xs: '350px'},
+        backgroundColor: '#fff',
+        borderRadius: '40px'
+        }}
+          height="76px"
+          value={search}
+          onChange={(e) => setSearch(e.target.value.toLowerCase())}
+          placeholder="Search Exercises"
+          type="text"
+        />
+        <Button className="search-btn"
+        sx={{
+          bgcolor: '#FF2625',
+          color: '#fff',
+          textTransform: 'none',
+          width: { lg: '175px', xs: '40px'},
+          fontSize: { lg: '20px', xs: '14px'},
+          height: '56px',
+          position: 'absolute',
+          right: '0'
+        }}
+        onClick={handleSearch}
+        >
+          Search
+        </Button>
+
+      </Box>
           </a>
         ))}
       </Stack>

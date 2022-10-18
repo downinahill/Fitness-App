@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 import { useAuth0 } from '@auth0/auth0-react';
 
 import './App.css';
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import Home from './pages/Home'
 import ExerciseDetail from './pages/ExerciseDetail'
 import Footer from './components/Footer'
@@ -28,11 +28,11 @@ function App() {
 
     <Box width='400px' sx={{width: {xl: '1488px' }}} m='auto'>
 
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         
-          <Route exact path ='/' element={<LoginButton />} />
-          {/* {isAuthenticated ? <Home /> : <LoginButton />} */}
+          {/* <Route to="/home" exact path ='/' element={<LoginButton />} />
+          {isAuthenticated ? <Home /> : <LoginButton />} */}
 
           <Route path = '/home' element={<Home />} />
           <Route path = '/exercise/:id' element={<ExerciseDetail />} />
