@@ -18,7 +18,7 @@ import User from './components/User';
 
 
 function App() {
-  const clientId = process.env.REACT_APP_CLIENT_ID
+  const clientId = 'SOKuaIxcwVKOZJxUYNSCnGBuHJFM4wQs'
   console.log(clientId);
   const { isAuthenticated } = useAuth0();
   console.log({isAuthenticated})
